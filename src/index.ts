@@ -1,7 +1,7 @@
 import { multiply } from "./lib/multiply";
 import { sum } from "./lib/sum";
 import { getName } from "./lib/names";
-import { printMe } from "./print";
+import { printMe } from "./lib/print";
 import readme from "./README.txt";
 
 document.getElementById("a").innerHTML = sum(1, 2).toString();
