@@ -4,14 +4,15 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "rm -rf dist/js && webpack --mode production",
-    "build:clean": "rm -rf dist/js",
+    "build": "rm -rf dist && webpack --mode production",
+    "build:clean": "rm -rf dist",
     "build:dev": "webpack --mode development --watch"
   },
   "author": "",
   "license": "ISC",
   "description": "",
   "devDependencies": {
+    "html-webpack-plugin": "^5.6.0",
     "raw-loader": "^4.0.2",
     "ts-loader": "^9.5.1",
     "typescript": "^5.4.5",

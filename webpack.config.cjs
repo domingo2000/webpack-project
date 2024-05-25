@@ -1,9 +1,10 @@
 const path = require("path");
+const HTMLWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
   entry: "./src/index.ts",
   output: {
-    path: path.resolve(__dirname, "dist/js"),
+    path: path.resolve(__dirname, "dist"),
     filename: "bundle.js",
     library: "MyLibrary",
     globalObject: "this",
@@ -28,5 +29,10 @@ module.exports = {
   resolve : {
     extensions: [".ts", ".js", ".txt"],
   },
+  plugins: [
+    new HTMLWebpackPlugin({
+      template: "./src/index.html",
+    }),
+  ],
   devtool: "source-map",
 };

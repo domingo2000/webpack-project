@@ -1,7 +1,12 @@
 import { multiply } from "./multiply";
 import { sum } from "./sum";
 import { getName } from "./names";
+import readme from "./README.txt";
 
-const readme = require("./README.txt").default;
+document.getElementById('a').innerHTML = sum(1, 2).toString();
+document.getElementById('b').innerHTML = multiply(1, 2).toString();
+document.getElementById('c').innerHTML = readme;
 
-export { multiply, sum, readme, getName };
+getName().then(function(name) {
+    document.getElementById('d').innerHTML = name;
+});
