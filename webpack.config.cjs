@@ -15,7 +15,7 @@ module.exports = {
         exclude: /node_modules/,
       },
       {
-        test: /\.txt$/,
+        test: /\.txt|html$/,
         use: "raw-loader",
       },
     ],
@@ -25,7 +25,7 @@ module.exports = {
   },
   plugins: [
     new HTMLWebpackPlugin({
-      template: "./src/index.html",
+      template: "./public/index.html",
     }),
   ],
   devtool: "source-map",
