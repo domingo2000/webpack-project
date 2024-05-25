@@ -17,10 +17,10 @@ module.exports = {
       {
         test: /\.txt$/,
         use: "raw-loader",
-      }
+      },
     ],
   },
-  resolve : {
+  resolve: {
     extensions: [".ts", ".js", ".txt"],
   },
   plugins: [

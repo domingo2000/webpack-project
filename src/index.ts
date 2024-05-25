@@ -1,12 +1,20 @@
-import { multiply } from "./multiply";
-import { sum } from "./sum";
-import { getName } from "./names";
+import { multiply } from "./lib/multiply";
+import { sum } from "./lib/sum";
+import { getName } from "./lib/names";
+import { printMe } from "./print";
 import readme from "./README.txt";
 
-document.getElementById('a').innerHTML = sum(1, 2).toString();
-document.getElementById('b').innerHTML = multiply(1, 2).toString();
-document.getElementById('c').innerHTML = readme;
+document.getElementById("a").innerHTML = sum(1, 2).toString();
+document.getElementById("b").innerHTML = multiply(1, 2).toString();
+document.getElementById("c").innerHTML = readme;
 
-getName().then(function(name) {
-    document.getElementById('d').innerHTML = name;
+document.getElementById("name").addEventListener("click", async () => {
+  const name = await getName();
+  document.getElementById("d").innerHTML = name;
 });
+
+printMe();
+
+if (module.hot) {
+  module.hot.accept();
+}
