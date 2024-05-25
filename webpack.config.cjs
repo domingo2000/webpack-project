@@ -10,11 +10,11 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.ts$/,
+        test: /\.ts|tsx$/,
         loader: "esbuild-loader",
         options: {
-          loader: "ts",
           target: "es2015",
+          jsx: "automatic",
         },
       },
       {
@@ -24,7 +24,7 @@ module.exports = {
     ],
   },
   resolve: {
-    extensions: [".ts", ".js", ".txt"],
+    extensions: [".ts", ".js", ".txt", ".tsx"],
   },
   plugins: [
     new HTMLWebpackPlugin({
@@ -33,6 +33,6 @@ module.exports = {
   ],
   devtool: "source-map",
   performance: {
-    maxAssetSize: 1000000,
+    maxAssetSize: 1000000, // 1MB
   },
 };
