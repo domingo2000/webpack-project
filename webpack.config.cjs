@@ -11,8 +11,11 @@ module.exports = {
     rules: [
       {
         test: /\.ts$/,
-        use: "ts-loader",
-        exclude: /node_modules/,
+        loader: "esbuild-loader",
+        options: {
+          loader: "ts",
+          target: "es2015",
+        },
       },
       {
         test: /\.txt|html$/,
@@ -29,4 +32,7 @@ module.exports = {
     }),
   ],
   devtool: "source-map",
+  performance: {
+    maxAssetSize: 1000000,
+  },
 };
