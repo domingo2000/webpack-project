@@ -15,19 +15,12 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(?:js|mjs|cjs|jsx|tsx|ts)$/,
-        exclude: /node_modules/,
+        test: /\.ts|tsx$/,
         use: {
-          loader: "babel-loader",
+          loader: "esbuild-loader",
           options: {
-            presets: [
-              ["@babel/preset-env", { targets: "defaults" }],
-              "@babel/preset-react",
-            ],
-            plugins: [
-              isDevelopment && require.resolve("react-refresh/babel"),
-              ["@babel/plugin-transform-typescript", { isTSX: true }],
-            ].filter(Boolean),
+            loader: "tsx",
+            target: "es2015",
           },
         },
       },
