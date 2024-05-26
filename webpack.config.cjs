@@ -84,6 +84,12 @@ module.exports = {
           // and not allow any straggling "old" SWs to hang around
           clientsClaim: true,
           skipWaiting: true,
+          runtimeCaching: [
+            {
+              urlPattern: new RegExp("https://jsonplaceholder.typicode.com"),
+              handler: "NetworkFirst",
+            },
+          ],
         }),
     ].filter(Boolean),
     ...[isDevelopment && new ReactRefreshWebpackPlugin()].filter(Boolean),
