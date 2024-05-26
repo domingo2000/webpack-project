@@ -45,6 +45,14 @@ module.exports = {
         use: "vue-loader",
       },
       {
+        test: /\.css$/,
+        use: ["style-loader"],
+      },
+      {
+        test: /\.css$/,
+        use: ["css-loader"],
+      },
+      {
         test: /\.txt|html$/,
         use: "raw-loader",
       },
