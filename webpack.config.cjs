@@ -23,20 +23,11 @@ module.exports = {
             presets: [
               ["@babel/preset-env", { targets: "defaults" }],
               "@babel/preset-react",
-              "@babel/preset-typescript",
             ],
             plugins: [
               isDevelopment && require.resolve("react-refresh/babel"),
+              ["@babel/plugin-transform-typescript", { isTSX: true }],
             ].filter(Boolean),
-          },
-        },
-      },
-      {
-        test: /\.ts?$/,
-        use: {
-          loader: "ts-loader",
-          options: {
-            transpileOnly: true,
           },
         },
       },
