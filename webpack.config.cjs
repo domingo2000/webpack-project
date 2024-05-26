@@ -1,8 +1,10 @@
 const path = require("path");
 const HTMLWebpackPlugin = require("html-webpack-plugin");
+const CompressionPlugin = require("compression-webpack-plugin");
 const ReactRefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin");
 const { VueLoaderPlugin } = require("vue-loader");
 const webpack = require("webpack");
+
 const isDevelopment = process.env.NODE_ENV !== "production";
 
 module.exports = {
@@ -37,7 +39,7 @@ module.exports = {
         use: ["css-loader"],
       },
       {
-        test: /\.txt|html$/,
+        test: /\.txt$/,
         use: "raw-loader",
       },
     ],
@@ -53,9 +55,11 @@ module.exports = {
     }),
     new HTMLWebpackPlugin({
       template: "./public/index.html",
+      favicon: "./public/favicon.ico",
     }),
     ...[isDevelopment && new ReactRefreshWebpackPlugin()].filter(Boolean),
     new VueLoaderPlugin(),
+    new CompressionPlugin(),
   ],
   devtool: "source-map",
   performance: {

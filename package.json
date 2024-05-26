@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "webpack serve --mode development",
     "production": "run-s build serve",
-    "serve": "http-server dist",
+    "serve": "http-server dist -o -g",
     "test": "echo \"Error: no test specified\" && exit 1",
     "clean": "run-p build:clean dependencies:clean",
     "dependencies:clean": "rimraf node_modules",
@@ -25,6 +25,7 @@
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "@types/webpack-env": "^1.18.5",
+    "compression-webpack-plugin": "^11.1.0",
     "css-loader": "^7.1.2",
     "esbuild": "^0.21.4",
     "esbuild-loader": "^4.1.0",
