@@ -1,9 +1,12 @@
 const path = require("path");
 const HTMLWebpackPlugin = require("html-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CompressionPlugin = require("compression-webpack-plugin");
 const ReactRefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin");
 const { VueLoaderPlugin } = require("vue-loader");
 const webpack = require("webpack");
+const WorkboxPlugin = require("workbox-webpack-plugin");
+const CopyWebpackPlugin = require("copy-webpack-plugin");
 
 const isDevelopment = process.env.NODE_ENV !== "production";
 
@@ -12,7 +15,7 @@ module.exports = {
   entry: "./src/index.ts",
   output: {
     path: path.resolve(__dirname, "dist"),
-    filename: "bundle.js",
+    filename: "[name].[contenthash].js",
   },
   module: {
     rules: [
@@ -31,25 +34,31 @@ module.exports = {
         use: "vue-loader",
       },
       {
-        test: /\.css$/,
-        use: ["style-loader"],
-      },
-      {
-        test: /\.css$/,
-        use: ["css-loader"],
-      },
-      {
-        test: /\.scss$/,
-        use: ["vue-style-loader", "css-loader", "sass-loader"],
+        test: /\.scss|css$/,
+        use: [
+          isDevelopment ? "style-loader" : MiniCssExtractPlugin.loader,
+          {
+            loader: "css-loader",
+            options: {
+              sourceMap: true,
+            },
+          },
+          {
+            loader: "sass-loader",
+            options: {
+              sourceMap: true,
+              sassOptions: {
+                outputStyle: isDevelopment ? "expanded" : "compressed",
+              },
+            },
+          },
+        ],
       },
       {
         test: /\.txt$/,
         use: "raw-loader",
       },
     ],
-  },
-  resolve: {
-    extensions: [".ts", ".js", ".txt", ".tsx"],
   },
   plugins: [
     new webpack.DefinePlugin({
@@ -58,15 +67,29 @@ module.exports = {
       __VUE_PROD_HYDRATION_MISMATCH_DETAILS__: "false",
     }),
     new HTMLWebpackPlugin({
+      title: "Vue 3 + React + TypeScript + SCSS + Webpack 5 + PWA",
       template: "./public/index.html",
-      favicon: "./public/favicon.ico",
     }),
+    new CopyWebpackPlugin({
+      patterns: [
+        { from: "public/manifest.json", to: "manifest.json" },
+        { from: "public/*.png", to: "[name][ext]" },
+        { from: "public/*.ico", to: "[name][ext]" },
+      ],
+    }),
+    ...[
+      !isDevelopment &&
+        new WorkboxPlugin.GenerateSW({
+          // these options encourage the ServiceWorkers to get in there fast
+          // and not allow any straggling "old" SWs to hang around
+          clientsClaim: true,
+          skipWaiting: true,
+        }),
+    ].filter(Boolean),
     ...[isDevelopment && new ReactRefreshWebpackPlugin()].filter(Boolean),
+    ...[!isDevelopment && new MiniCssExtractPlugin()].filter(Boolean),
     new VueLoaderPlugin(),
-    new CompressionPlugin(),
+    ...[!isDevelopment && new CompressionPlugin()].filter(Boolean),
   ],
   devtool: "source-map",
-  performance: {
-    maxAssetSize: 1000000, // 1MB
-  },
 };

@@ -21,11 +21,15 @@ function decrement() {
 }
 </script>
 
-<style scoped lang="css">
+<style scoped lang="scss">
 .counter {
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: #dbb5b5;
+
+  &:hover {
+    background-color: #b5dbdb;
+  }
 }
 </style>
