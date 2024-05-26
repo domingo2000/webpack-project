@@ -39,6 +39,10 @@ module.exports = {
         use: ["css-loader"],
       },
       {
+        test: /\.scss$/,
+        use: ["vue-style-loader", "css-loader", "sass-loader"],
+      },
+      {
         test: /\.txt$/,
         use: "raw-loader",
       },

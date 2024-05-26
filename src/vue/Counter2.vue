@@ -1,15 +1,13 @@
 <template>
-  <h1>Counter Vue CSS</h1>
+  <h1>Counter 2 Vue SCSS</h1>
   <div class="counter">
     <button @click="decrement">-</button>
     <span>{{ count }}</span>
     <button @click="increment">+</button>
   </div>
-  <Counter2 />
 </template>
 
 <script setup lang="ts">
-import Counter2 from "./Counter2.vue";
 import { ref } from "vue";
 
 const count = ref(0);
@@ -23,10 +21,11 @@ function decrement() {
 }
 </script>
 
-<style scoped lang="scss">
+<style scoped lang="css">
 .counter {
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: #dbb5b5;
 }
 </style>

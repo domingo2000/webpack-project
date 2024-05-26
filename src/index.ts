@@ -8,6 +8,7 @@ import { createRoot, Root } from "react-dom/client";
 import React from "react";
 import CounterVue from "./vue/Counter.vue";
 import { createApp } from "vue";
+import "./main.css";
 
 createApp(CounterVue).mount("#root-vue");
 
