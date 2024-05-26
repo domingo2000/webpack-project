@@ -1,9 +1,9 @@
-import { multiply } from "./lib/multiply";
-import { sum } from "./lib/sum";
-import { getName } from "./lib/names";
-import { printMe } from "./lib/print";
+import { multiply } from "./lib/multiply.ts";
+import { sum } from "./lib/sum.ts";
+import { getName } from "./lib/names.ts";
+import { printMe } from "./lib/print.ts";
 import readme from "./README.txt";
-import { Counter } from "./components/Counter";
+import { Counter } from "./components/Counter.tsx";
 import { createRoot, Root } from "react-dom/client";
 import React from "react";
 
