@@ -6,6 +6,10 @@ import readme from "./README.txt";
 import { Counter } from "./components/Counter.tsx";
 import { createRoot, Root } from "react-dom/client";
 import React from "react";
+import CounterVue from "./vue/Counter.vue";
+import { createApp } from "vue";
+
+createApp(CounterVue).mount("#root-vue");
 
 document.getElementById("a").innerHTML = sum(1, 2).toString();
 document.getElementById("b").innerHTML = multiply(1, 2).toString();
