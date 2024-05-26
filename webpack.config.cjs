@@ -20,7 +20,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.ts|tsx$/,
+        test: /\.js|ts|tsx|jsx$/,
         use: {
           loader: "esbuild-loader",
           options: {

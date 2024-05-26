@@ -3,14 +3,14 @@ import { sum } from "./lib/sum.ts";
 import { getName } from "./lib/names.ts";
 import { printMe } from "./lib/print.ts";
 import readme from "./README.txt";
-import { Counter } from "./components/Counter.tsx";
+import App from "./components/react/App.tsx";
 import { createRoot, Root } from "react-dom/client";
 import React from "react";
-import CounterVue from "./vue/Counter.vue";
+import AppVue from "./components/vue/App.vue";
 import { createApp } from "vue";
 import "./main.css";
 
-createApp(CounterVue).mount("#root-vue");
+createApp(AppVue).mount("#root-vue");
 
 document.getElementById("a").innerHTML = sum(1, 2).toString();
 document.getElementById("b").innerHTML = multiply(1, 2).toString();
@@ -28,14 +28,14 @@ let root: Root;
 document.addEventListener("DOMContentLoaded", function (event) {
   const rootElement = document.getElementById("root");
   root = createRoot(rootElement);
-  const element = React.createElement(Counter);
+  const element = React.createElement(App);
   root.render(element);
 });
 
 if (module.hot) {
   // Hot module replacement for react component without recreating root element
-  module.hot.accept("./components/Counter.tsx", () => {
-    const newElement = React.createElement(Counter);
+  module.hot.accept("./components/react/App.tsx", () => {
+    const newElement = React.createElement(App);
     root.render(newElement);
   });
 

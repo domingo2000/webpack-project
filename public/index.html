@@ -8,14 +8,72 @@
     <title>Document</title>
   </head>
   <body>
-    <h1>Example Webpack!!!</h1>
-    <p id="a">initial</p>
-    <p id="b">initial</p>
-    <p id="c">initial</p>
-    <p id="d">initial</p>
-    <button id="name">Generate Name</button>
-    <input type="text" name="" id="" />
-    <div id="root"></div>
-    <div id="root-vue"></div>
+    <main>
+      <h1>Example Webpack Application</h1>
+      <p>
+        This application contain a setup with webpack including many features,
+        the idea is to combine multiple tools to learn how to use webpack for
+        complex projects with multiple frameworks and languages.
+      </p>
+      <h2>Features</h2>
+      <h3>Frameworks</h3>
+      <ul>
+        <li>React 18</li>
+        <li>Vue 3</li>
+      </ul>
+      <h3>Styles</h3>
+      <ul>
+        <li>Sass</li>
+        <li>Css</li>
+      </ul>
+      <h3>Languages</h3>
+      <ul>
+        <li>JavaScript</li>
+        <li>TypeScript</li>
+        <li>JSX/TSX</li>
+      </ul>
+      <h3>Optimizations</h3>
+      <ul>
+        <li>Code Splitting</li>
+        <li>Lazy Loading</li>
+        <li>Minifying (With default webpack terser plugin)</li>
+        <li>Css minifying</li>
+        <li>Css extraction (serve css in its own file)</li>
+        <li>Compressing (With gzip)</li>
+      </ul>
+      <h3>Development and Debugging Features</h3>
+      <ul>
+        <li>Hot Module Replacement</li>
+        <li>React Refresh (Keep State on HMR)</li>
+        <li>Source Maps</li>
+      </ul>
+      <h3>PWA Support</h3>
+      <ul>
+        <li>Service Worker (With Workbox Defaults)</li>
+        <li>Installation</li>
+      </ul>
+      <h1>Applications Showcase</h1>
+      <h2>Simple module loading from js and ts files</h2>
+      <h3>Loaded functions from ts and js files</h3>
+      <p id="a"></p>
+      <p id="b"></p>
+      <h3>Loaded from README.txt</h3>
+      <p id="c"></p>
+      <h3>Lazy load big dependencies (load on click)</h3>
+      <p id="d">Click to lazy load a random name from faker</p>
+      <button id="name">Generate Name</button>
+      <h3>Hot Module replacement</h3>
+      <p>
+        You can change js code and components without loosing state of input
+      </p>
+      <input type="text" name="" id="" />
+      <h1>Frameworks</h1>
+      <p>
+        Note that on HMR the react component does not loose its state because of
+        react refresh
+      </p>
+      <div id="root"></div>
+      <div id="root-vue"></div>
+    </main>
   </body>
 </html>
