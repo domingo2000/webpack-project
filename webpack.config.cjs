@@ -69,7 +69,7 @@ module.exports = {
     }),
     new HTMLWebpackPlugin({
       title: "Vue 3 + React + TypeScript + SCSS + Webpack 5 + PWA",
-      template: "./public/index.html",
+      template: "./src/index.html",
     }),
     new FaviconWebpackPlugin({
       logo: "./public/logo.png",
