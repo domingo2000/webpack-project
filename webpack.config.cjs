@@ -1,12 +1,13 @@
 const path = require("path");
 const HTMLWebpackPlugin = require("html-webpack-plugin");
+const FaviconWebpackPlugin = require("favicons-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CompressionPlugin = require("compression-webpack-plugin");
-const ReactRefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin");
 const { VueLoaderPlugin } = require("vue-loader");
-const webpack = require("webpack");
 const WorkboxPlugin = require("workbox-webpack-plugin");
-const CopyWebpackPlugin = require("copy-webpack-plugin");
+
+const ReactRefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin");
+const webpack = require("webpack");
 
 const isDevelopment = process.env.NODE_ENV !== "production";
 
@@ -70,12 +71,15 @@ module.exports = {
       title: "Vue 3 + React + TypeScript + SCSS + Webpack 5 + PWA",
       template: "./public/index.html",
     }),
-    new CopyWebpackPlugin({
-      patterns: [
-        { from: "public/manifest.json", to: "manifest.json" },
-        { from: "public/*.png", to: "[name][ext]" },
-        { from: "public/*.ico", to: "[name][ext]" },
-      ],
+    new FaviconWebpackPlugin({
+      logo: "./public/logo.png",
+      logoMaskable: "./public/maskable-icon.png",
+      inject: true,
+      favicons: {
+        appName: "WebpackApp",
+        appDescription: "Vue 3 + React + TypeScript + SCSS + Webpack 5 + PWA",
+        start_url: "/webpack-project/",
+      },
     }),
     ...[
       !isDevelopment &&
