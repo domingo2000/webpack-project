@@ -1,0 +1,1 @@
+if('serviceWorker' in navigator) {window.addEventListener('load', () => {navigator.serviceWorker.register('/webpack-project/sw.js', { scope: '/webpack-project/' })})}
