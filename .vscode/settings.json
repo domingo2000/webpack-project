@@ -1,4 +1,5 @@
 {
   "editor.formatOnSave": true,
-  "cSpell.words": ["favicons", "Flargo"]
+  "cSpell.words": ["favicons", "Flargo"],
+  "svg.preview.background": "custom"
 }
