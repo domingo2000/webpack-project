@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { Counter } from "./Counter.tsx";
-import OfflineIndicator from "./OfflineIndicator.tsx";
+import { Counter } from "./Counter";
+import OfflineIndicator from "./OfflineIndicator";
 
 function App() {
   const [data, setData] = useState(null);
